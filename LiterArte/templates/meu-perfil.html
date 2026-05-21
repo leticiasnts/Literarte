@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiterArte | Meu Perfil</title>
+    <link rel="stylesheet" href="{% static 'css/meu-perfil.css' %}">
+        <link rel="icon" href="{% static 'icones/favicon/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+
+    <header class="CabecalhoPrincipal">
+        <div class="LogoSite"><a href="{% url 'index' %}" class="LogoSite">LiterArte</a></div>
+
+        <nav class="MenuHamburguer">
+            <button class="botaoBurguer"><img src="{% static 'icones/menuBLack.png' %}"></button>
+            <ul class="ListaMenu">
+                <li><a href="{% url 'index' %}"><img src="{% static 'icones/botao-de-inicio.png' %}">Início</a></li>
+                <li><a href="{% url 'meu_perfil' %}"> <img src="{% static 'icones/perfil.png' %}"> Meu Perfil</a></li>
+                <li><a href="{% url 'minha_lista' %}"> <img src="{% static 'icones/pilha-de-livros.png' %}"> Minha Lista</a></li>
+                <li><a href="{% url 'login' %}"> <img src="{% static 'icones/sair.png' %}"> Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="ConteudoPrincipal ContainerPerfil">
+
+    <section class="CardPerfil">
+
+        <header class="TopoPerfil">
+
+            <div class="InfoPerfilTopo">
+                <h1>Meu Perfil</h1>
+                <p class="EmailUsuario">{{ user.email }}</p>
+            </div>
+        </header>
+
+        <div class="DadosPerfil">
+
+            <div class="CampoPerfil">
+                <span class="LabelPerfil">Nome</span>
+                <span class="ValorPerfil">{{ user.first_name }}</span>
+            </div>
+
+            <div class="CampoPerfil">
+                <span class="LabelPerfil">Livro Preferido</span>
+                <span class="ValorPerfil">{{ user.perfil.livro_favorito|default:"Não informado." }}</span>
+            </div>
+
+            <div class="CampoPerfil">
+                <span class="LabelPerfil">Gêneros Favoritos</span>
+                <span class="ValorPerfil">{{ user.perfil.generos_favoritos|default:"Não informado" }}</span>
+            </div>
+
+            <div class="CampoPerfil">
+                <span class="LabelPerfil">Autores Favoritos</span>
+                <span class="ValorPerfil">{{ user.perfil.autores_favoritos|default:"Não informado" }}</span>
+            </div>
+
+        </div>
+
+        <div class="AcoesPerfil">
+            <a href="{% url 'editar_perfil' %}" class="BotaoPrimario">Editar Perfil</a>
+        </div>
+        <div class="AcoesPerfil">
+            <h6>Ainda não se cadastrou em nosso site? <br> Clique no botão abaixo.</h6>
+            <a href="{% url 'cadastro' %}" class="BotaoPrimario">Cadastre-se.</a>
+        </div>
+
+    </section>
+
+</main>
+
+
+    <footer class="RodapePrincipal">
+        <p>© 2026 — LiterArte - Todos os direitos reservados.</p>
+        <p>Desenvolvido com 💜 para amantes da literatura.</p>
+    </footer>
+
+
+    <script src="{% static 'scripts/scripts.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+@import url("style.css");
+
+.ContainerLogin {
+    min-height: 100vh;
+    background: linear-gradient(
+        180deg,
+        var(--RoxoPastel),
+        var(--Branco),
+        var(--RoxoPastel)
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ContainerPerfil {
+    display: flex;
+    justify-content: center;
+}
+
+/* Card principal */
+.CardPerfil {
+    background-color: var(--Branco);
+    width: 100%;
+    max-width: 700px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* Topo roxo */
+.TopoPerfil {
+    background: linear-gradient(90deg, var(--RoxoEscuro), var(--RoxoMedio));
+    color: var(--Branco);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.InfoPerfilTopo h1 {
+    font-size: 1.8rem;
+}
+
+.EmailUsuario {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Dados */
+.DadosPerfil {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.CampoPerfil {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.LabelPerfil {
+    font-weight: bold;
+    color: var(--RoxoMedio);
+}
+
+.ValorPerfil {
+    background-color: #f9fafb;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+/* Botão */
+.AcoesPerfil {
+    padding: 0 32px 32px;
+}
+
+.BotaoPrimario {
+    background-color: var(--RoxoMedio);
+    color: var(--Branco);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.BotaoPrimario:hover {
+    opacity: 0.9;
+}
+
+
+/*Edição*/
+.FormularioPerfil {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.FormularioPerfil label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: bold;
+    color: var(--RoxoMedio);
+}
+
+.FormularioPerfil input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--CinzaClaro);
+    font-size: 1rem;
+}
+
+.AcoesFormulario {
+    display: flex;
+    gap: 12px;
+}
+
+.BotaoSecundario {
+    background-color: var(--CinzaClaro);
+    color: var(--CinzaTexto);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/*RESPONSIVIDADE*/
+
+@media (max-width: 1024px) {
+    .ContainerPerfil {
+        padding: 40px;
+    }
+    
+    .CardPerfil {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ContainerPerfil {
+        padding: 15px;
+    }
+
+    .CardPerfil {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .TopoPerfil {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .CampoPerfil {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 10px 0;
+    }
+
+    .LabelPerfil {
+        font-size: 0.9rem;
+    }
+
+    .ValorPerfil {
+        font-size: 1rem;
+    }
+
+    .AcoesPerfil, .AcoesFormulario {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .BotaoPrimario, .BotaoSecundario {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+}

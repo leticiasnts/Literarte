@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiterArte | Editar Perfil</title>
+    <link rel="stylesheet" href="{% static 'css/meu-perfil.css' %}">
+    <link rel="icon" href="{% static 'icones/favicon/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+
+    <header class="CabecalhoPrincipal">
+        <div class="LogoSite"><a href="{% url 'index' %}" class="LogoSite">LiterArte</a></div>
+
+        <nav class="MenuHamburguer">
+            <button class="botaoBurguer"><img src="{% static 'icones/menuBLack.png' %}"></button>
+            <ul class="ListaMenu">
+                <li><a href="{% url 'index' %}"><img src="{% static 'icones/botao-de-inicio.png' %}">Início</a></li>
+                <li><a href="{% url 'meu_perfil' %}"> <img src="{% static 'icones/perfil.png' %}"> Meu Perfil</a></li>
+                <li><a href="{% url 'minha_lista' %}"> <img src="{% static 'icones/pilha-de-livros.png' %}"> Minha Lista</a></li>
+                <li><a href="{% url 'login' %}"> <img src="{% static 'icones/sair.png' %}"> Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="ConteudoPrincipal ContainerPerfil">
+
+    <section class="CardPerfil">
+
+        <header class="TopoPerfil">
+            <h1>Editar Perfil</h1>
+        </header>
+
+        <form class="FormularioPerfil" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <label>
+                Nome
+                <input type="text" name="nome" value="{{ user.first_name }}">
+            </label>
+
+            <label>
+                Livro Preferido
+                {{ form.livro_favorito }}
+            </label>
+
+            <label>
+                Gêneros Favoritos
+                {{ form.generos_favoritos }}
+            </label>
+
+            <label>
+                Autores Favoritos
+                {{ form.autores_favoritos }}
+            </label>
+
+            <div class="AcoesFormulario">
+                <button type="submit" class="BotaoPrimario">Salvar</button>
+                
+                <a href="{% url 'meu_perfil' %}" class="BotaoSecundario">Cancelar</a>
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+
+    <footer class="RodapePrincipal">
+        <p>© 2026 — LiterArte - Todos os direitos reservados.</p>
+        <p>Desenvolvido com 💜 para amantes da literatura.</p>
+    </footer>
+
+
+    <script src="{% static 'scripts/scripts.js' %}"></script>
+</body>
+</html>

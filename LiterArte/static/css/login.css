@@ -1,0 +1,116 @@
+@import url("style.css");
+
+.ContainerLogin {
+    min-height: 100vh;
+    background: linear-gradient(
+        180deg,
+        var(--RoxoPastel),
+        var(--Branco),
+        var(--RoxoPastel)
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CardLogin {
+    background-color: var(--Branco);
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.TituloLogin {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--RoxoEscuro);
+    margin-bottom: 32px;
+}
+
+.FormularioLogin {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.GrupoCampo label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.GrupoCampo input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--CinzaClaro);
+}
+
+.BotaoLogin {
+    background: linear-gradient(90deg, var(--RoxoMedio), var(--RoxoClaro));
+    color: var(--Branco);
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.BotaoLogin:hover {
+    opacity: 0.9;
+}
+
+.TextoAuxiliar {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.TextoAuxiliar a {
+    color: var(--RoxoMedio);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+/*RESPONSIVIDADE*/
+
+@media (max-width: 1024px) {
+    .CardCadastro, .CardLogin {
+        max-width: 600px;
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .ContainerCadastro, .ContainerLogin {
+        padding: 15px;
+        height: auto;
+    }
+
+    .CardCadastro, .CardLogin {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .TituloCadastro, .TituloLogin {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .BotaoCadastro, .BotaoLogin {
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    .GrupoCampo input {
+        padding: 12px;
+    }
+}

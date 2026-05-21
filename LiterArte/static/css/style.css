@@ -1,0 +1,256 @@
+/* aquela limpeza geral*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis de cor do LiterArte */
+:root {
+    --RoxoEscuro: #4a148c;
+    --RoxoMedio: #6a1b9a;
+    --RoxoClaro: #9c27b0;
+    --RoxoPastel: #f3e5f5;
+
+    --CinzaTexto: #374151;
+    --CinzaClaro: #e5e7eb;
+    --Branco: #ffffff;
+}
+
+/* Global*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--RoxoPastel);
+    color: var(--CinzaTexto);
+}
+
+/* Cabeçalho */
+.CabecalhoPrincipal {
+    background: linear-gradient(90deg, var(--RoxoEscuro), var(--RoxoMedio));
+    color: var(--Branco);
+    padding: 16px 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.LogoSite  {
+    font-family: Georgia, serif;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: bold;
+    color: var(--Branco);
+    text-decoration: none;
+}
+
+
+.LogoSite:hover {
+    opacity: 0.9;
+}
+
+
+/*Menu*/
+.MenuHamburguer {
+    position: relative;
+}
+
+.botaoBurguer{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.botaoBurguer img {
+    width: 32px; 
+    display: block;
+}
+
+.ListaMenu {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    right: 0; 
+    
+    background-color: var(--RoxoMedio);
+    padding: 20px;
+    width: 200px;
+    border-radius: 0 0 8px 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    
+    flex-direction: column; 
+    gap: 15px;
+    z-index: 1000; 
+}
+
+.ListaMenu.aberto {
+    display: flex; 
+}
+
+.ListaMenu li{
+    list-style: none;
+}
+
+.ListaMenu li a {
+    color: var(--Branco);
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    padding: 10px 0;
+
+    display: flex;       
+    align-items: center;
+    justify-content: flex-start; 
+    padding-left: 10px;
+    gap: 15px;
+    
+}
+
+.ListaMenu li a img{
+    width: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+.ListaMenu li a:hover {
+    color: var(--RoxoPastel);
+}
+
+
+/* conteúdo */
+.ConteudoPrincipal {
+    padding: 40px 32px;
+}
+
+/* Frase diária*/
+.SecaoFraseDiaria {
+    background: linear-gradient(90deg, var(--RoxoClaro), var(--RoxoMedio));
+    color: var(--Branco);
+    padding: 32px;
+    border-radius: 12px;
+    margin-bottom: 48px;
+}
+
+.FraseLiteraria {
+    font-family: Georgia, serif;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+/*Livros*/
+.TituloSecao {
+    font-size: 1.75rem;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+
+/*Cards de Livros*/
+
+.ListaLivros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.CardLivro {
+    background: linear-gradient(
+        180deg,
+        var(--RoxoMedio),
+        var(--Branco)
+    );
+
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.ImagemLivro img{
+    height: 300px;
+    background-color: var(--CinzaClaro);
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.InfoLivro {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.TituloLivro {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.AutorLivro {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+
+
+/* Rodapé*/
+.RodapePrincipal {
+    background-color: var(--RoxoPastel);
+    color: var(--RoxoMedio);
+    text-align: center;
+    padding: 16px;
+    margin-top: 48px;
+}
+
+
+
+/*RESPONSIVIDADE*/
+
+@media (max-width: 1024px) {
+    .ListaLivros {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .CabecalhoPrincipal {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .ListaMenu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .ListaMenu li a {
+        font-size: 0.9rem;
+    }
+
+    .botaoBurguer {
+        display: none;
+    }
+
+    .FraseLiteraria {
+        font-size: 1rem;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .ListaLivros {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        gap: 20px;
+    }
+
+    .CardLivro {
+        width: 100%;
+        max-width: 100%;
+    }
+}

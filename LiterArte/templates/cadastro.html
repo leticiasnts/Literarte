@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiterArte | Cadastre-se </title>
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+    <link rel="icon" href="{% static 'icones/favicon/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+
+    <main class="ContainerCadastro">
+
+        <section class="CardCadastro">
+            <h1 class="TituloCadastro">Criar conta</h1>
+
+            <form class="FormularioCadastro" method="POST">
+                {% csrf_token %} {% if form.non_field_errors %}
+                    <div class="erro">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}   
+
+                <div class="GrupoCampo">
+                    <label>Nome</label>
+                    {{ form.nome }} {{ form.nome.errors }}
+                </div>
+
+                <div class="GrupoCampo">
+                    <label>Email</label>
+                    {{ form.email }} {{ form.email.errors }}
+                </div>
+
+                <div class="GrupoCampo">
+                    <label>Senha</label>
+                    {{ form.senha }} {{ form.senha.errors }}
+                </div>
+
+                <div class="GrupoCampo">
+                    <label>Confirmar Senha</label>
+                    {{ form.confirmar_senha }} {{ form.confirmar_senha.errors }}
+                </div>
+
+                <button class="BotaoCadastro">Cadastrar</button>
+
+            </form>
+        </section>
+
+    </main>
+
+</body>
+</html>

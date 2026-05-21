@@ -1,0 +1,161 @@
+@import url("style.css");
+
+
+/*Menu*/
+.MenuHamburguer {
+    position: relative;
+}
+
+.botaoBurguer{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.botaoBurguer img {
+    width: 32px; 
+    display: block;
+}
+
+.ListaMenu {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    right: 0; 
+    
+    background-color: var(--RoxoMedio);
+    padding: 20px;
+    width: 200px;
+    border-radius: 0 0 8px 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    
+    flex-direction: column; 
+    gap: 15px;
+    z-index: 1000; 
+}
+
+.ListaMenu.aberto {
+    display: flex; 
+}
+
+.ListaMenu li{
+    list-style: none;
+}
+
+.ListaMenu li a {
+    color: var(--Branco);
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    padding: 10px 0;
+
+    display: flex;       
+    align-items: center;
+    justify-content: flex-start; 
+    padding-left: 10px;
+    gap: 15px;
+    
+}
+
+.ListaMenu li a img{
+    width: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+.ListaMenu li a:hover {
+    color: var(--RoxoPastel);
+}
+
+
+/*Lista de Leitura*/
+
+.ListaLeitura {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 48px;
+}
+
+.CardListaLivro {
+    background-color: var(--Branco);
+    width: 100%;
+    max-width: 900px;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    gap: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.CapaLivro {
+    width: 120px;
+    height: 180px;
+    border-radius: 12px;
+    background: linear-gradient(
+        180deg,
+        var(--RoxoClaro),
+        var(--RoxoMedio)
+    );
+}
+
+.btn-remover:hover {
+    background-color: #ffebee;
+    color: #b71c1c;
+    border-color: #ef9a9a;
+}
+
+
+/*RESPONSIVIDADE*/
+
+@media (max-width: 1024px) {
+    .CardListaLivro {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .ListaLeitura {
+        padding: 10px;
+    }
+
+    .CardListaLivro {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .CapaLivro {
+        width: 140px;
+        height: 210px;
+    }
+
+    .InfoLivro {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .TituloLivro {
+        font-size: 1.2rem;
+    }
+
+    .select-status {
+        width: 100%;
+        margin-top: 15px;
+        padding: 12px;
+    }
+    
+    .btn-remover {
+        width: 100%;
+        margin-top: 15px;
+        padding: 12px;
+        display: block;
+        text-align: center;
+    }
+}

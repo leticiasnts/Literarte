@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiterArte | Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <link rel="icon" href="{% static 'icones/favicon/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+
+    <main class="ContainerLogin">
+
+        <section class="CardLogin">
+            <h1 class="TituloLogin">LiterArte</h1>
+
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form class="FormularioLogin" method="POST">
+                {% csrf_token %}  <div class="GrupoCampo">
+                    <label>Usuário (Email)</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="GrupoCampo">
+                    <label>Senha</label>
+                    {{ form.password }}
+                </div>
+
+                <button class="BotaoLogin">Entrar</button>
+            </form>
+
+            <p class="TextoAuxiliar">
+                Não tem conta?
+                <a href="{% url 'cadastro' %}">Cadastre-se</a>
+            </p>
+        </section>
+
+    </main>
+
+</body>
+</html>

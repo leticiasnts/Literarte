@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiterArte | {{ livro.titulo }}</title>
+    <link rel="stylesheet" href="{% static 'css/livros.css' %}">
+    <link rel="icon" href="{% static 'icones/favicon/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="{% url 'index' %}" class="logo">LiterArte</a>
+            <a href="{% url 'index' %}" class="btn-voltar">← Voltar</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="livro-hero">
+            <div class="livro-capa-grande"> 
+                {% if livro.capa %}
+                    <img src="{{ livro.capa.url }}" alt="Capa de {{ livro.titulo }}">
+                {% else %}
+                    <img src="{% static 'img/capa_padrao.png' %}" alt="Capa não disponível">
+                {% endif %}
+            </div>
+            
+            <div class="livro-detalhes">
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'adicionar_na_lista' livro.id %}" class="btn-adicionar-lista">
+                        Adicionar à Minha Lista
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn-adicionar-lista" onclick="alert('Faça login para salvar livros!')">
+                        Adicionar à Minha Lista
+                    </a>
+                {% endif %}
+
+                <h1 class="livro-titulo-principal">{{ livro.titulo }}</h1>
+                <p class="livro-autor-principal">{{ livro.autor.nome }}</p> 
+                
+                <div class="livro-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Publicação</span>
+                        <span class="meta-value">{{ livro.ano_publicacao }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Páginas</span>
+                        <span class="meta-value">{{ livro.paginas }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Editora</span>
+                        <span class="meta-value">{{ livro.editora }}</span>
+                    </div>
+                </div>
+
+                <div class="livro-generos">
+                    {% for genero in livro.generos.all %}
+                        <span class="genero-tag">{{ genero.nome }}</span>
+                    {% empty %}
+                        <span class="genero-tag">Geral</span>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+
+        <section class="secao">
+            <h2 class="secao-titulo">Sinopse</h2>
+            <div class="secao-conteudo">
+                {{ livro.sinopse|linebreaks }}
+            </div>
+        </section>
+
+        <section class="secao">
+            <h2 class="secao-titulo">Sobre o Autor</h2>
+            <div class="autor-info">
+                <div class="autor-foto"> 
+                    {% if livro.autor.foto %}
+                        <img src="{{ livro.autor.foto.url }}" alt="{{ livro.autor.nome }}">
+                    {% else %}
+                        <img src="{% static 'img/autor_padrao.png' %}" alt="Autor">
+                    {% endif %}
+                </div>
+                <div class="autor-detalhes">
+                    <h3 class="autor-nome">{{ livro.autor.nome }}</h3>
+                    <p class="autor-datas">
+                        {{ livro.autor.data_nascimento|date:"d/m/Y" }} 
+                        {% if livro.autor.data_falecimento %}
+                            - {{ livro.autor.data_falecimento|date:"d/m/Y" }}
+                        {% endif %}
+                    </p>
+                    <div class="secao-conteudo">
+                        {{ livro.autor.biografia|linebreaks }}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% if livro.contexto_historico %}
+        <section class="secao">
+            <h2 class="secao-titulo">Contexto Histórico</h2>
+            <div class="secao-conteudo">
+                {{ livro.contexto_historico|linebreaks }}
+            </div>
+        </section>
+        {% endif %}
+
+        {% if livro.analise_critica %}
+        <section class="secao">
+            <h2 class="secao-titulo">Análise Crítica</h2>
+            <div class="secao-conteudo">
+                {{ livro.analise_critica|linebreaks }}
+            </div>
+        </section>
+        {% endif %}
+
+    </div>
+
+    <footer class="RodapePrincipal">
+        <p>© 2026 — LiterArte - Todos os direitos reservados.</p>
+        <p>Desenvolvido com 💜 para amantes da literatura.</p>
+    </footer>
+
+</body>
+</html>

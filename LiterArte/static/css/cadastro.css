@@ -1,0 +1,107 @@
+@import url("style.css");
+
+.ContainerCadastro {
+    min-height: 100vh;
+    background: linear-gradient(
+        180deg,
+        var(--RoxoPastel),
+        var(--Branco),
+        var(--RoxoPastel)
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CardCadastro {
+    background-color: var(--Branco);
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.TituloCadastro {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--RoxoEscuro);
+    margin-bottom: 32px;
+}
+
+.FormularioCadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* reaproveita o mesmo padrão do login */
+.GrupoCampo label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.GrupoCampo input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--CinzaClaro);
+}
+
+.BotaoCadastro {
+    background: linear-gradient(90deg, var(--RoxoMedio), var(--RoxoClaro));
+    color: var(--Branco);
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.BotaoCadastro:hover {
+    opacity: 0.9;
+}
+
+
+/*RESPONSIVIDADE*/
+
+@media (max-width: 1024px) {
+    .CardCadastro, .CardLogin {
+        max-width: 600px;
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .ContainerCadastro, .ContainerLogin {
+        padding: 15px;
+        height: auto;
+    }
+
+    .CardCadastro, .CardLogin {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .TituloCadastro, .TituloLogin {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .BotaoCadastro, .BotaoLogin {
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    .GrupoCampo input {
+        padding: 12px;
+    }
+}

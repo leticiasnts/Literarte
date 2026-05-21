@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>LiterArte | Minha Lista</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/minha-lista.css' %}"> 
+    <link rel="icon" href="{% static 'icones/favicon/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+
+    <header class="CabecalhoPrincipal">
+        <div class="LogoSite"><a href="{% url 'index' %}" class="LogoSite">LiterArte</a></div>
+        
+        <nav class="MenuHamburguer">
+            <button class="botaoBurguer"><img src="{% static 'icones/menuBLack.png' %}"></button>
+            <ul class="ListaMenu">
+                <li><a href="{% url 'index' %}"><img src="{% static 'icones/botao-de-inicio.png' %}">Início</a></li>
+                <li><a href="{% url 'meu_perfil' %}"> <img src="{% static 'icones/perfil.png' %}"> Meu Perfil</a></li>
+                <li><a href="{% url 'minha_lista' %}"> <img src="{% static 'icones/pilha-de-livros.png' %}"> Minha Lista</a></li>
+                <li><a href="{% url 'login' %}"> <img src="{% static 'icones/sair.png' %}"> Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="ConteudoPrincipal">
+        <section class="SecaoLivros">
+            <h2 class="TituloSecao">Minha Lista de Leitura</h2>
+
+            <div class="ListaLivros">
+                
+                {% for item in itens %}
+                <article class="CardLivro">
+                    <div class="ImagemLivro">
+                        <a href="{% url 'detalhe_livro' item.livro.id %}"> 
+                            {% if item.livro.capa %}
+                                <img src="{{ item.livro.capa.url }}" alt="{{ item.livro.titulo }}">
+                            {% else %}
+                                <img src="{% static 'img/capa_padrao.png' %}">
+                            {% endif %}
+                        </a>
+                    </div>
+
+                    <div class="InfoLivro">
+                        <h2 class="TituloLivro">{{ item.livro.titulo }}</h2>
+                        <p class="AutorLivro">{{ item.livro.autor.nome }}</p>
+                        
+                        <form action="{% url 'atualizar_status' item.id %}" method="POST">
+                            {% csrf_token %}
+                            <select name="novo_status" onchange="this.form.submit()" class="select-status status-{{ item.status }}">
+                                <option value="QUERO_LER" {% if item.status == 'QUERO_LER' %}selected{% endif %}>
+                                    Quero Ler
+                                </option>
+                                <option value="LENDO" {% if item.status == 'LENDO' %}selected{% endif %}>
+                                    Lendo
+                                </option>
+                                <option value="LIDO" {% if item.status == 'LIDO' %}selected{% endif %}>
+                                    Lido
+                                </option>
+                            </select>
+                        </form>    
+
+                        <a href="{% url 'remover_da_lista' item.id %}" 
+                        class="btn-remover"
+                        onclick="return confirm('Tem certeza que deseja remover este livro da lista?')">
+                        Remover
+                        </a>
+
+                    </div>
+                </article>
+                
+                {% empty %}
+                <div class="lista-vazia">
+                    <p>Sua lista está vazia!</p>
+                    <a href="{% url 'index' %}" class="btn-voltar">Explorar livros</a>
+                </div>
+                {% endfor %}
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="RodapePrincipal">
+        <p>© 2026 — LiterArte - Todos os direitos reservados.</p>
+        <p>Desenvolvido com 💜 para amantes da literatura.</p>
+    </footer>
+
+    <script src="{% static 'scripts/scripts.js' %}"></script>
+
+</body>
+</html>
